@@ -4,6 +4,9 @@ const port = 3000;
 const sequelize = require("./database/connection");
 const Todo = require("./database/tables/todo");
 
+
+app.use("/photos", express.static('./photos'));
+
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World--!");
@@ -40,3 +43,5 @@ app.get("/all-todos", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+

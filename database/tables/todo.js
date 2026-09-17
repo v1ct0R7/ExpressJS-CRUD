@@ -24,3 +24,6 @@ const Todo = sequelize.define(
 );
 
 module.exports = Todo;
+
+
+
