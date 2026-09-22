@@ -8,7 +8,28 @@ const bcrypt = require("bcrypt");
 const app = express();
 const port = 3000;
 const sequelize = require("./database/connection");
-const user = require("./database/tables/userList");
+const router = require("./routes/movie.js")
+const routers = require("./routes/authRoutes.js")
+
+// importon relacionet
+require("./database/relations");
+
+sequelize
+  .sync()
+  .then(() => {
+    console.log("Tabelat u krijuan.");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+//Body parsing middleware // perkthen te dhenat qe vijn nga useri ne JSON
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//API Routers create port to use routes "define the name and pass the router"
+app.use("/movies", router);
+app.use("/auth", routers);
 
 
 // app.use(cors(
@@ -30,9 +51,8 @@ const user = require("./database/tables/userList");
 // );
 
 app.get('/', (req, res) => {
-    res.send('Hello')
+    res.json({message: "Hello "})
 })
-
 
 
 

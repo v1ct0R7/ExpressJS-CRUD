@@ -9,6 +9,7 @@ const sequelize = new Sequelize({
   port: 3306,
 });
 
+
 async function connection() {
     try {
         await sequelize.authenticate();
