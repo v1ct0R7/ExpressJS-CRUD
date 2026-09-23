@@ -1,12 +1,18 @@
 const express = require("express");
-const register = require("../controlers/authController")
+const {register, login, logout} = require("../controlers/authController")
+
 // const bcrypt = require("bcrypt"); // hash pass
 
 // const user = require("../database/tables/userList");  //marrim modelin user nga userList.js
 
 const router = express.Router();
 
-router.post("/register", register)
+router.post("/register", register);
+router.post("/login", login);
+router.post("/logout", logout);
+
+
+
 
 // routers.post('/register', async (req, res) => {
 //     try {
