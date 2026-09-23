@@ -11,6 +11,8 @@ const sequelize = require("./database/connection");
 const movieRouter = require("./routes/movie.js");
 const authRouter = require("./routes/authRoutes.js");
 
+const watchList = require("./routes/watchListRoutes.js")
+
 // Importon relacionet
 require("./database/relations");
 
@@ -34,6 +36,8 @@ app.use(cookieParser());
 // API Routes
 app.use("/movies", movieRouter);
 app.use("/auth", authRouter);
+app.use("/watchList", watchList);
+
 
 // Test route
 app.get("/", (req, res) => {
