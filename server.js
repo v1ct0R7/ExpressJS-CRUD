@@ -11,14 +11,14 @@ const sequelize = require("./database/connection");
 const movieRouter = require("./routes/movie.js");
 const authRouter = require("./routes/authRoutes.js");
 
-const watchList = require("./routes/watchListRoutes.js")
+const watchList = require("./routes/watchListRoutes.js");
 
 // Importon relacionet
 require("./database/relations");
 
 // Kontrollon/krijon tabelat
 sequelize
-  .sync()
+  .sync({ alter: true })
   .then(() => {
     console.log("Tabelat u krijuan.");
   })
@@ -37,7 +37,6 @@ app.use(cookieParser());
 app.use("/movies", movieRouter);
 app.use("/auth", authRouter);
 app.use("/watchList", watchList);
-
 
 // Test route
 app.get("/", (req, res) => {
